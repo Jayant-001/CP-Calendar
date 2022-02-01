@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:fontFamily="monospace"
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CP Calendar"
+        android:textSize="22sp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_gravity="center"
+            android:text="Site wise details"/>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/codechef_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code Chef"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/codeforces_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code Forces"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/hackerrank_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hacker Rank"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/hackerearth_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hacker Earth"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/leetcode_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leet Code"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/atcoder_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="At Coder"
+                android:layout_margin="8dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/black"/>
+
+        <Button
+            android:id="@+id/all_contest_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Contests"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
