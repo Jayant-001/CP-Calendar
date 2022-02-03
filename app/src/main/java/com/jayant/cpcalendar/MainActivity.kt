@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.cardview.widget.CardView
 
 class MainActivity : AppCompatActivity() {
-     lateinit var codeChefBtn : Button
-    lateinit var codeForcesBtn : Button
-    lateinit var hackerRankBtn : Button
-    lateinit var hackerEarthBtn : Button
-    lateinit var leetCodeBtn : Button
-    lateinit var atcoderButton : Button
-    lateinit var allContestBtn : Button
+     lateinit var codeChefBtn : CardView
+    lateinit var codeForcesBtn : CardView
+    lateinit var hackerRankBtn : CardView
+    lateinit var hackerEarthBtn : CardView
+    lateinit var leetCodeBtn : CardView
+    lateinit var atcoderButton : CardView
+    lateinit var allContestBtn : CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         codeChefBtn = findViewById(R.id.codechef_btn)
         codeForcesBtn = findViewById(R.id.codeforces_btn)
-        hackerRankBtn = findViewById<Button>(R.id.hackerrank_btn)
-        hackerEarthBtn = findViewById<Button>(R.id.hackerearth_btn)
-        leetCodeBtn = findViewById<Button>(R.id.leetcode_btn)
-        atcoderButton = findViewById<Button>(R.id.atcoder_btn)
-        allContestBtn = findViewById<Button>(R.id.all_contest_btn)
+        hackerRankBtn = findViewById(R.id.hackerrank_btn)
+        hackerEarthBtn = findViewById(R.id.hackerearth_btn)
+        leetCodeBtn = findViewById(R.id.leetcode_btn)
+        atcoderButton = findViewById(R.id.atcoder_btn)
+        allContestBtn = findViewById(R.id.all_contest_btn)
 
         codeChefBtn.setOnClickListener {
             val intent = Intent(this@MainActivity, ContestActivity::class.java)

@@ -50,4 +50,9 @@ dependencies {
 
 //    ext.anko_version='0.10.8'
 //    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    def lottieVersion = "4.2.2"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

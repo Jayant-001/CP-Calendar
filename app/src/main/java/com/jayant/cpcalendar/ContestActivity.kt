@@ -9,11 +9,13 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import org.jsoup.Jsoup
 import java.io.IOException
 
 class ContestActivity : AppCompatActivity() {
 
+    lateinit var loaderAnimation: LottieAnimationView
     lateinit var contestRecycler : RecyclerView
     lateinit var progressBar : ProgressBar
     lateinit var key : String
@@ -22,8 +24,10 @@ class ContestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contest)
 
+        loaderAnimation = findViewById(R.id.loading_animation)
         contestRecycler = findViewById(R.id.contestRecycler)
         progressBar = findViewById(R.id.progressBar)
+        progressBar.visibility  = View.GONE
         contestRecycler.layoutManager = LinearLayoutManager(this)
 
         key = intent.getStringExtra("sitename").toString()
@@ -52,10 +56,48 @@ class ContestActivity : AppCompatActivity() {
                         var td2 = signleContest.getElementsByTag("td")
 
                         var siteName = td2[1].getElementsByAttribute("title").attr("title")
-
                         var contestName = signleContest.text()
+
                         if(contestName.length >= 20) {
-                            contestList.add(ContestData(contestName, siteName))
+
+                            when(key) {
+                                "codeforces" -> {
+                                    if(siteName == "CodeForces") {
+                                        contestList.add(ContestData(contestName,siteName))
+                                    }
+                                }
+                                "codechef" -> {
+                                    if(siteName == "CodeChef") {
+                                        contestList.add(ContestData(contestName, siteName))
+                                    }
+                                }
+                                "hackerrank" -> {
+                                    if(siteName == "HackerRank") {
+                                        contestList.add(ContestData(contestName, siteName))
+                                    }
+                                }
+                                "hackerearth" -> {
+                                    if(siteName == "HackerEarth") {
+                                        contestList.add(ContestData(contestName, siteName))
+                                    }
+                                }
+                                "leetcode" -> {
+                                    if(siteName == "LeetCode")
+                                        contestList.add(ContestData(contestName, siteName))
+
+                                }
+                                "atcoder" -> {
+                                    if(siteName == "AtCoder") {
+                                        contestList.add(ContestData(contestName, siteName))
+                                    }
+                                }
+                                else -> {
+                                    contestList.add(ContestData(contestName, siteName))
+                                }
+                            }
+
+
+//                            contestList.add(ContestData(contestName, siteName))
                         }
 
                     }
@@ -74,6 +116,7 @@ class ContestActivity : AppCompatActivity() {
             super.onPostExecute(result)
 
             progressBar.visibility = View.GONE
+            loaderAnimation.visibility = View.GONE
 
             val adapter = ContestAdapter(contestList, key)
             contestRecycler.adapter = adapter
