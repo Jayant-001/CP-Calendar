@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -17,7 +18,6 @@ class ContestActivity : AppCompatActivity() {
 
     lateinit var loaderAnimation: LottieAnimationView
     lateinit var contestRecycler : RecyclerView
-    lateinit var progressBar : ProgressBar
     lateinit var key : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +25,12 @@ class ContestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contest)
 
         loaderAnimation = findViewById(R.id.loading_animation)
+        loaderAnimation.visibility = View.VISIBLE
         contestRecycler = findViewById(R.id.contestRecycler)
-        progressBar = findViewById(R.id.progressBar)
-        progressBar.visibility  = View.GONE
         contestRecycler.layoutManager = LinearLayoutManager(this)
 
         key = intent.getStringExtra("sitename").toString()
-        Toast.makeText(this@ContestActivity, key, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this@ContestActivity, key, Toast.LENGTH_SHORT).show()
 
         FetchContestData().execute()
     }
@@ -56,6 +55,10 @@ class ContestActivity : AppCompatActivity() {
                         var td2 = signleContest.getElementsByTag("td")
 
                         var siteName = td2[1].getElementsByAttribute("title").attr("title")
+                        val url = signleContest.getElementsByAttribute("href").attr("href")
+//                        Log.d("debug",url.toString())
+//                        Log.d("debug", "------------------------------------")
+//                        Log.d("debug", url);
                         var contestName = signleContest.text()
 
                         if(contestName.length >= 20) {
@@ -63,41 +66,40 @@ class ContestActivity : AppCompatActivity() {
                             when(key) {
                                 "codeforces" -> {
                                     if(siteName == "CodeForces") {
-                                        contestList.add(ContestData(contestName,siteName))
+                                        contestList.add(ContestData(contestName,siteName, url))
                                     }
                                 }
                                 "codechef" -> {
                                     if(siteName == "CodeChef") {
-                                        contestList.add(ContestData(contestName, siteName))
+                                        contestList.add(ContestData(contestName, siteName, url))
                                     }
                                 }
                                 "hackerrank" -> {
                                     if(siteName == "HackerRank") {
-                                        contestList.add(ContestData(contestName, siteName))
+                                        contestList.add(ContestData(contestName, siteName, url))
                                     }
                                 }
                                 "hackerearth" -> {
                                     if(siteName == "HackerEarth") {
-                                        contestList.add(ContestData(contestName, siteName))
+                                        contestList.add(ContestData(contestName, siteName, url))
                                     }
                                 }
                                 "leetcode" -> {
                                     if(siteName == "LeetCode")
-                                        contestList.add(ContestData(contestName, siteName))
+                                        contestList.add(ContestData(contestName, siteName, url))
 
                                 }
                                 "atcoder" -> {
                                     if(siteName == "AtCoder") {
-                                        contestList.add(ContestData(contestName, siteName))
+                                        contestList.add(ContestData(contestName, siteName, url))
                                     }
                                 }
                                 else -> {
-                                    contestList.add(ContestData(contestName, siteName))
+                                    contestList.add(ContestData(contestName, siteName, url))
                                 }
                             }
 
-
-//                            contestList.add(ContestData(contestName, siteName))
+//                            contestList.add(ContestData(contestName, siteName, url))
                         }
 
                     }
@@ -107,6 +109,11 @@ class ContestActivity : AppCompatActivity() {
             }
             catch (e: IOException) {
                 e.printStackTrace()
+                Log.d("debug", e.toString())
+                Toast.makeText(this@ContestActivity, e.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
+            catch (e: Exception) {
+                Log.d("debug", e.toString())
             }
 
             return null
@@ -115,7 +122,6 @@ class ContestActivity : AppCompatActivity() {
         override fun onPostExecute(result: Void?) {
             super.onPostExecute(result)
 
-            progressBar.visibility = View.GONE
             loaderAnimation.visibility = View.GONE
 
             val adapter = ContestAdapter(contestList, key)

@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
         welcomeAnimation = findViewById(R.id.welcome_animation)
 
         appName.animate().translationY(-1400f).setDuration(2700).startDelay = 0
-        welcomeAnimation.animate().translationX(2000f).setDuration(2000).startDelay = 2900
+//        welcomeAnimation.animate().translationX(2000f).setDuration(2000).startDelay = 0
 
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
@@ -38,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4500)
+        }, 3200)
 
 
     }
