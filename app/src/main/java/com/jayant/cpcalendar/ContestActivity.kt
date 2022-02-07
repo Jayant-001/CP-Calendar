@@ -59,14 +59,7 @@ class ContestActivity : AppCompatActivity() {
 //                        Log.d("debug",url.toString())
 //                        Log.d("debug", "------------------------------------")
 //                        Log.d("debug", url);
-
-
-                        var contestName = signleContest.text()
-                        System.out.println(contestName)
-                        System.out.println(siteName)
-                        System.out.println(url)
-                        System.out.println("-------------------------------------------------")
-
+                        g
 
                         if(contestName.length >= 20) {
 
